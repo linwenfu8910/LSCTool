@@ -1,0 +1,65 @@
+SHELLMODE = SEND MODE
+CMDMODE = SANYO
+TIME = 500
+
+#SHOWCMDLOG = TRUE	 
+#SHOWTIMELOG = TRUE	
+#SHOWSENDLOG = TRUE
+SHOWRECEIVELOG = FALSE	
+#MULTI-IF = TRUE
+
+#重复开关机2次
+REPEAT COUNT = 2
+REPEAT START
+	REPEAT COUNT = 1000
+	REPEAT START
+		CMDMODE = SANYO
+		CR0
+		WAIT = RECEIVE
+		SWITCH = RECEIVE
+			CASE = 80
+				PRINT = 正在待机状态，准备开机
+				CMDMODE = MIS
+				PON
+				BREAK
+			CASE = 81
+				PRINT = LAMP EEROR,待机,准备开机
+				CMDMODE = MIS
+				PON
+				BREAK
+			CASE = 00
+				PRINT = 正在开机状态，准备关机
+				CMDMODE = MIS
+				POF
+				BREAK
+			CASE = 10
+				#10状态有两种情况，
+				#一种是待机下则为POWER FAIL
+				#一种是开机下则为IRIS ERROR
+				#使用QPW查询电源状态
+				CMDMODE = MIS
+				QPW
+				IF RECEIVE = 000
+					PRINT = POWER FAIL,待机,准备开机
+					PON
+				ELSE
+					PRINT = IRIS ERROR, 准备关机
+					POF
+				ENDIF
+				BREAK
+			CASE = 40,20,21
+				PRINT = cooling状态
+				BREAK
+			DEFAULT
+				PRINT = 未知状态
+				BREAK
+		ENDSWITCH
+		
+		IF RECEIVE = PON,POF
+			PRINT = 完成开关机操作
+			BREAK
+		ENDIF
+			
+	REPEAT END
+REPEAT END
+	

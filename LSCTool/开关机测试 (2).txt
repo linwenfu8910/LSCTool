@@ -1,0 +1,121 @@
+SHELLMODE = SEND MODE
+CMDMODE = SANYO
+TIME = 10
+
+SHOWCMDLOG = TRUE	 
+#SHOWTIMELOG = TRUE	
+#SHOWSENDLOG = TRUE
+SHOWRECEIVELOG = FALSE	
+#MULTI-IF = TRUE
+
+
+REPEAT COUNT = 2
+REPEAT START
+#BREAK
+REPEAT END
+BREAK
+PRINT = RUN HERE
+
+JUMP = test
+CALL = test
+PRINT = diaoyong wanbi
+WAIT = 1000000
+
+#重复执行100次
+#REPEAT COUNT = 2
+REPEAT START
+#检测关机
+REPEAT COUNT = 3
+REPEAT START
+	REPEAT COUNT = 4
+	REPEAT START
+		CMDMODE = SANYO
+		CR0
+		#WAIT = RECEIVE
+		SWITCH = RECEIVE
+			CASE = 80
+				PRINT = 正在待机状态，准备开机
+				CMDMODE = MIS
+				PON
+				WAIT = RECEIVE
+				BREAK
+			CASE = 81
+				PRINT = LAMP EEROR,待机,准备开机
+				CMDMODE = MIS
+				PON
+				BREAK
+			CASE = 00
+				#设置等待时间，查看信号显示是否异常
+				WAIT = 30000
+				PRINT = 正在开机状态，准备关机
+				CMDMODE = MIS
+				POF
+				WAIT = RECEIVE
+				BREAK
+			CASE = 10
+				#10状态有两种情况，
+				#一种是待机下则为POWER FAIL
+				#一种是开机下则为IRIS ERROR
+				#使用QPW查询电源状态
+				CMDMODE = MIS
+				QPW
+				IF RECEIVE = 000
+					PRINT = POWER FAIL,待机,准备开机
+					PON
+					WAIT = RECEIVE
+				ELSE
+					#设置等待时间，查看信号显示是否异常
+					WAIT = 30000
+					PRINT = IRIS ERROR, 准备关机
+					POF
+					WAIT = RECEIVE
+				ENDIF
+				BREAK
+			CASE = 40,20,21
+				#PRINT = cooling状态
+				BREAK
+		ENDSWITCH
+
+		IF RECEIVE = PON
+			PRINT = 完成开机操作
+			BREAK
+		ELSE
+			IF RECEIVE = POF
+				PRINT = 完成关机操作
+				BREAK
+			ENDIF
+		ENDIF
+	REPEAT END
+REPEAT END
+
+	#关机COOLING到Standby
+	PRINT = COOLLING 开始
+	#REPEAT COUNT = 10
+	REPEAT START
+		CMDMODE = SANYO
+		CR0
+		#WAIT = RECEIVE
+		IF RECEIVE = 80,81
+			BREAK
+		ENDIF	
+	REPEAT END
+	PRINT = COOLLING 结束，已经待机
+REPEAT END
+
+
+CALL START = test1
+PRINT = 测试 call test1
+CALL END
+
+CALL START = test
+PRINT = 测试 call test
+CALL = test1
+CALL END
+
+JUMP LABEL = test
+PRINT = TEST END.
+WAIT = 1000
+JUMP = test
+CALL = test
+
+

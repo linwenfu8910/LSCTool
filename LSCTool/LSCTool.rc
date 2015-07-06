@@ -1,0 +1,314 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\LSCTool.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\LSC.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 215, 74
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 LSC Tool"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         145,IDC_STATIC,"Static",SS_BITMAP,14,14,27,27
+    LTEXT           "投影仪串口工具，2.2 版",IDC_STATIC,51,15,105,8,SS_NOPREFIX
+    LTEXT           "林文福 (mail: linwenfu8910@163.com)",IDC_STATIC,51,26,131,8
+    DEFPUSHBUTTON   "退出",IDOK,160,53,50,14,WS_GROUP
+    PUSHBUTTON      "串口脚本教程",IDC_BUTTON1,93,53,50,14
+    PUSHBUTTON      "程序使用说明书",IDC_BUTTON_GUIDE,23,53,50,14
+END
+
+IDD_LSCTOOL_DIALOG DIALOGEX 0, 0, 385, 391
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "LinSerialComTool"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "SANYO",IDC_RADIO_CMD_SANYO,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,322,179,45,10
+    CONTROL         "PANA MIS",IDC_RADIO_CMD_MIS,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,322,191,45,10
+    CONTROL         "PANA BIN",IDC_RADIO_CMD_BIN,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,322,203,45,10
+    CONTROL         "TEXT",IDC_RADIO_CMD_TEXT,"Button",BS_AUTORADIOBUTTON,322,215,45,10
+    PUSHBUTTON      "发送",IDC_BUTTON_SEND,214,38,46,16
+    PUSHBUTTON      "串口设置",IDC_BUTTON_COMSETUP,6,15,46,17
+    EDITTEXT        IDC_EDIT_COMLOG,6,58,304,312,ES_MULTILINE | ES_AUTOVSCROLL | ES_NOHIDESEL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | NOT WS_TABSTOP,WS_EX_STATICEDGE
+    CONTROL         "",IDC_MSCOMM1,"{648A5600-2C6E-101B-82B6-000000000014}",WS_TABSTOP,7,362,22,22
+    PUSHBUTTON      "连接",IDC_BUTTON_CONNECT,55,15,46,16
+    PUSHBUTTON      "断开",IDC_BUTTON_DISCONNECT,104,15,46,16
+    EDITTEXT        IDC_EDIT_INPUT,36,39,177,14,ES_AUTOHSCROLL
+    RTEXT           "输入框 : ",IDC_STATIC,6,40,30,13
+    COMBOBOX        IDC_COMBO_INPUTLOG,274,39,104,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "重复发送",IDC_CHECK_SENDREPEAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,18,38,10
+    EDITTEXT        IDC_EDIT_REPEATTIME,199,17,43,13,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "ms",IDC_STATIC,242,18,15,12
+    PUSHBUTTON      "清除发送记录",IDC_BUTTON_CLEARSENDLOG,322,121,46,16
+    PUSHBUTTON      "清除屏幕",IDC_BUTTON_CLEARSCREEN,322,139,46,16
+    GROUPBOX        "指令模式选择",IDC_STATIC,319,167,59,66
+    PUSHBUTTON      "加载脚本",IDC_BUTTON_INPUTSHELL,322,103,46,16
+    PUSHBUTTON      "记录保存",IDC_BUTTON_SENDLOG,322,85,46,16
+    LTEXT           "静态",IDC_STATIC_COMINFO,6,4,143,9
+    CONTROL         "显示时间",IDC_CHECK_SHOWTIME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,263,17,38,12
+    CONTROL         "显示发送记录",IDC_CHECK_SHOWSENDLOG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,305,17,56,12
+    PUSHBUTTON      "退出",IDC_BUTTON_QUIT,321,335,46,16
+    PUSHBUTTON      "打开保存记录",IDC_BUTTON_OPENLOG,322,67,46,16
+    CTEXT           "",IDC_STATIC_COMLOG,6,374,304,10,WS_DISABLED
+END
+
+IDD_COMSETUP DIALOGEX 0, 0, 295, 261
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "串口设置"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "串口选择",IDC_STATIC,21,20,260,36
+    COMBOBOX        IDC_COMBO_COMLIST,26,32,178,31,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+    PUSHBUTTON      "获取串口列表",IDC_BUTTON_COMLIST,218,30,56,16
+    GROUPBOX        "波特率选择",IDC_STATIC,21,68,259,50
+    CONTROL         "115200",IDC_RADIO_BAUND0,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,27,78,45,11
+    CONTROL         "57600",IDC_RADIO_BAUND1,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,75,78,45,11
+    CONTROL         "56000",IDC_RADIO_BAUND2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,123,78,45,11
+    CONTROL         "38400",IDC_RADIO_BAUND3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,171,78,45,11
+    CONTROL         "28800",IDC_RADIO_BAUND4,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,219,78,45,11
+    CONTROL         "19200",IDC_RADIO_BAUND5,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,27,100,45,11
+    CONTROL         "9600",IDC_RADIO_BAUND6,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,75,100,45,11
+    CONTROL         "4800",IDC_RADIO_BAUND7,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,123,100,45,11
+    CONTROL         "2400",IDC_RADIO_BAUND8,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,171,100,45,11
+    CONTROL         "1200",IDC_RADIO_BAUND9,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,219,100,45,11
+    GROUPBOX        "数据位",IDC_STATIC,23,129,256,24
+    CONTROL         "7",IDC_RADIO_DATABIT1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,28,138,52,11
+    CONTROL         "8",IDC_RADIO_DATABIT2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,95,137,52,11
+    GROUPBOX        "停止位",IDC_STATIC,23,160,255,25
+    CONTROL         "1",IDC_RADIO_STOPBIT1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,29,169,52,11
+    CONTROL         "2",IDC_RADIO_STOPBIT2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,95,170,52,11
+    GROUPBOX        "校验位",IDC_STATIC,23,189,255,25
+    CONTROL         "无校验",IDC_RADIO_CHECK_NONE,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,29,198,52,11
+    CONTROL         "奇校验",IDC_CHECKEVEN,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,95,199,52,11
+    CONTROL         "偶校验",IDC_RADIO_CHECK_ODD,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,151,199,52,11
+    DEFPUSHBUTTON   "确定",IDOK,75,240,50,14
+    PUSHBUTTON      "取消",IDCANCEL,170,240,50,14
+END
+
+IDD_SHELL_PROGRESS DIALOGEX 0, 0, 293, 118
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "加载进度"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "退出",IDCANCEL,121,89,50,14
+    CONTROL         "",IDC_PROGRESS_LOAD,"msctls_progress32",WS_BORDER,33,56,241,23
+    CTEXT           "静态1",IDC_STATIC_WARNMSG,33,19,241,32
+    PUSHBUTTON      "暂停脚本",IDC_BUTTON_STOP,67,89,53,14
+    PUSHBUTTON      "退出脚本",IDC_BUTTON_QUIT,172,89,53,14
+    CTEXT           "静态2",IDC_STATIC_WARNMSG2,33,19,244,67
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,2,0,0
+ PRODUCTVERSION 2,2,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "FileDescription", "串口通信工具"
+            VALUE "FileVersion", "2.2.0.0"
+            VALUE "InternalName", "LinSerialComTool.exe"
+            VALUE "LegalCopyright", "LinWenfu CopyRight"
+            VALUE "OriginalFilename", "LinSerialComTool.exe"
+            VALUE "ProductName", "LSC串口通信工具"
+            VALUE "ProductVersion", "2.2.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 210
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 67
+    END
+
+    IDD_LSCTOOL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 378
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 384
+    END
+
+    IDD_COMSETUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 288
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 254
+    END
+
+    IDD_SHELL_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 286
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 111
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_LSCTOOL_DIALOG DLGINIT
+BEGIN
+    IDC_MSCOMM1, 0x376, 102, 0
+0x0013, 0x0000, 0x0043, 0x006f, 0x0070, 0x0079, 0x0072, 0x0069, 0x0067, 
+0x0068, 0x0074, 0x0020, 0x0028, 0x0063, 0x0029, 0x0020, 0x0031, 0x0039, 
+0x0039, 0x0034, 0x0020, 0x4321, 0x1234, 0x0008, 0x0000, 0x03ed, 0x0000, 
+0x03ed, 0x0000, 0x5601, 0x648a, 0x0000, 0x0006, 0x0000, 0x0001, 0x0400, 
+0x0000, 0x0200, 0x0000, 0x2580, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x003f, 0x0000, 0x0001, 0x0000, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "res\\LSC3.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 LinSerialComTool(&A)..."
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\LSCTool.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

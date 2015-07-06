@@ -1,0 +1,87 @@
+			
+			
+	语法介绍：		
+	#		
+		在该行的第一个字符输入#，就意味着当前脚本命令为注释语法，	
+		该行的命令将不会得到执行，可以使用这个字符作为脚本的标记。	
+		编写完脚本以后，留下一些合适的注释，可以方便日后，年代久远，你还能够读的懂该脚本。	
+			
+	SHELLMODE = SEND MODE		
+		脚本的识别符，需要在脚本文件的第一行输入该命令，告诉程序你启用了这个脚本（带有#开头的行不算）。	
+		如果不输入该行，脚本将得不到解释。	
+	PRINT		
+		将PRINT后面的信息显示到程序上去的语法。	
+		PRINT = 欢迎来到我的脚本，这个脚本是由XXX编写的，欢迎使用。	
+		那么上面这句话，将在程序的显示界面上直接输出，欢迎来到我的脚本，这个脚本是由XXX编写的，欢迎使用。	
+		语法为： PRINT = XXXXX 注意，PRINT后面需要带空格，=号后面也需要输入一个空格。	
+			
+	TIME		
+		该命令将设置每个可执行指令之间的间隔时间，如果需要取消掉，则直接设置为0即可。	
+		该间隔时间对REPEAT START/REPEAT END/PRINT/#无效，也就是解释列出的命令的时候，不消耗时间，	
+		解释完指令，立马会读取下一条命令。	
+		语法为：TIME = XXXXX 注意，TIME后面需要带空格，=号后面也需要输入一个空格，XXXX必须为数字，最大数不能超过21亿	
+	WAIT		
+		该命令，顾名思义，就是让串口工具等待多少时间。	
+		WAIT = 300	
+		那么上面这句话的意思是，等待300ms,然后在执行下面的语句。	
+		注意一下，两条指令之间输入WAIT需要加上TIME的间隔时间。举个例子：	
+			
+		TIME = 500	
+		CRO	
+		WAIT = 500	
+		CR1	
+		那么从CR0到CR1之间经过的时间为WAIT+TIME = 1000ms 也就是1s。	
+			
+	SHOWCMDLOG		
+		显示指令设置的信息。	
+		语法：SHOWCMDLOG = TRUE	
+		一般基本上用不着，如果不用请不要设置，直接不写或者设置为FALSE	
+			
+	SHOWTIMELOG		
+		显示发送接收系统时间。	
+		语法：SHOWTIMELOG = TRUE	
+		如果你在程序上已经勾选了显示系统时间，这里可以不用设置就默认打开。如果不用可以不写，或者设置为FALSE。	
+	CMDMODE		
+		设置命令模式。	
+		可以选择的选项为：SANYO/MIS/BIN/TEXT	
+		语法为：CMDMODE = SANYO	
+		注意CMDMODE后面需要带空格，=号后面也需要带空格。如果不主动设置，则为程序界面上已经选好的模式。	
+			
+	REPEAT COUNT		
+	REPEAT START		
+	REPEAT END		
+			
+		循环模式。	
+		需要成对出现。REPEATCOUNT 用来指明需要循环的次数。REPEAT START/REPEAT END用来标注需要循环执行指令。	
+		那么将会重复执行REPEAT START到REPEAT END之间的指令REPEAT COUNT次。	
+		举个例子：	
+			
+		REPEAT COUNT = 10	
+		REPEAT START	
+		CRO	
+		CR1	
+		REPEAT END	
+			
+		那么上面这段脚本的意思是，重复执行10次，REPEAT START到REPEAT END之间的内容。也就是CR0 CR1会重复执行10次。	
+			
+		高级用法，脚本支持最多10次嵌套循环使用。当然一般基本上用不着。	
+		举个例子。	
+			
+		REPEAT COUNT = 2	
+		REPEAT START	
+		CRO	
+		REPEAT COUNT = 3	
+		REPEAT START	
+		CR1	
+		REPEAT END	
+		REPEAT END	
+			
+		那么最终输出为：	
+		CR0 	
+		CR1	循环3次
+		CR1	
+		CR1	
+		CRO	
+		CR1	循环3次
+		CR1	
+		CR1	

@@ -1,0 +1,16 @@
+如果使用的VS编译器没有MSCOMM控件可以按下面步骤添加。
+1. 解压MSCOMM，解压后拷贝到：
+C:\Windows\System32（WIN7系统）；
+C:\WINDOWS\system32（XP系统）。
+注意：64位win7系统还需要将mscomm32.ocx文件复制到
+C:\Windows\SysWOW64\目录下，否则后面注册会出错。
+2. 在C:\Windows\System32里找到cmd.exe以管理员身份运行：
+Regsvr32  C:\WINDOWS\system32\MSCOMM32.OCX
+3. 修改注册表：win+R组合键打开“运行”或者直接在开始菜单里找到“运行”；
+输入regedit后回车，打开注册表管理器，在其中找到HKEY_CLASSES_ROOT项下的Licenses项，
+添加主项命名为“4250E830-6AC2-11cf-8ADB-00AA00C00905”，
+并将键值修改为“kjljvjjjoquqmjjjvpqqkqmqykypoqjquoun”
+4. MSComm控件Create()函数运行时报错问题：
+程序编译通过但运行时报错如图，解决方法：
+对于MSComm的关联变量在创建前需要先销毁窗口，如下程序段：
+       m_MSComm.DestroyWindow();           //m_MSComm为MSComm的关联变量

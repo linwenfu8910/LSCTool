@@ -1,0 +1,4 @@
+---- ShellSendMode_JumpStart Matches (3 in 2 files) ----
+LSCToolDlg.cpp (d:\tempcode\lsctool\lsctool\lsctool):void CLSCToolDlg::ShellSendMode_JumpStart(CString strRead)
+LSCToolDlg.cpp (d:\tempcode\lsctool\lsctool\lsctool):				ShellSendMode_JumpStart(strRead);
+LSCToolDlg.h (d:\tempcode\lsctool\lsctool\lsctool):	void ShellSendMode_JumpStart(CString strRead);

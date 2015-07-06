@@ -1,0 +1,129 @@
+#首先第一句话很关键，指明当前shell使用的是发送模式
+SHELLMODE = SEND MODE
+
+
+#将字符串显示到工具里面
+PRINT = 欢迎来到我的脚本中
+WAIT = 2000
+
+#显示设置指令的打印信息
+SHOWCMDLOG = FALSE
+
+#显示发送记录
+SHOWSENDLOG = TRUE
+
+#显示系统时间
+SHOWTIMELOG = TRUE
+
+
+#设定发送间隔时间，时间单位是ms,
+#当然不主动设定的话，默认也是500ms
+#如果指令太快发送的话，投影仪本身反馈过来的信息会不对。
+TIME = 500
+
+#设定当前发送命令模式为SANO模式
+#当然如果不设定的话，就取决于程序上
+#选择的是什么模式，就是什么模式了。
+#模式有CMDMODE = SANYO/MIS/BIN/TEXT。
+CMDMODE = SANYO
+
+
+#接下来随便测试几条命令
+TIME = 0
+CR0
+WAIT = RECIEVE
+IF RECIEVE = 20
+  PRINT = 接收到20，当前状态为COOLING状态。
+ELSE
+  PRINT = 没有接收到 20，在  发	送一次
+  CR0
+  WAIT = RECIEVE
+  IF RECIEVE = 80
+  	PRINT = 接收到80，当前状态为待机状态。
+  ELSE
+	PRINT = 还是没有接收到，好可怜啊！
+  ENDIF
+ENDIF
+PRINT = 测试结束
+
+CR0
+CR1
+CR2
+CR3
+TIME = 500
+
+#如果需要等待1s之后在发送CR4的话，需要设置WAIT
+#这里注意的是，总的等待时间不要忘记了，要加上TIME间隔的时间
+#也就是 WAIT+TIME = 1000ms, 就相当于1s了。
+WAIT = 500
+CR4
+
+#如果想要获得比TIME更小的时间怎么获取呢？
+#比如获取到200ms
+#这里利用一个小技巧
+TIME = 0
+WAIT = 200
+CR4
+
+#这样由于上面设置改变了TIME时间
+#后面如果需要恢复间隔时间就需要重新设置
+#不然的话间隔时间将被设置成0，指令会很快速的发送
+TIME = 500
+
+
+#循环发送脚本演示
+#主要由REPEAT COUNT 指定循环发送的次数 
+#      REPEAT START 指定循环发送的开始位置
+#      REPEAT END   指定虚幻发送的结束位置
+#然后把需要循环发送的字符，放到REPEAT START和REPEAT END之间。
+#这样子就会重复的发送指定的次数了。当然了START-END之间你可以随时
+#切换命令的模式，调整间隔时间或者等待时间什么的,丝毫不受影响。
+REPEAT COUNT = 5147483647
+REPEAT START
+CR0
+WAIT = 500
+REPEAT END
+
+#命令模式切换演示
+#很简单，只需要输入CMDMODE = SANYO/MIS/BIN/TEXT就可以直接切换过来了。
+CMDMODE = MIS
+QPM
+QVR
+QVC
+
+CMDMODE = BIN
+02 00 86 03
+
+#BIN命令模式下
+#需要注意的一点是
+#由于BIN命令需要输入准确的16进制才可以发送，
+#所以如下指令将不会发送
+abc
+
+#注释的话，在前头打个#号就OK了哦。
+#留下好的注释，可以直接提示自己脚本干了些什么事情
+#使用PRINT的话，能够使程序LOG画面显示的更加直观漂亮
+#注释演示：
+#下面脚本，每隔5s切换一次通道，循环切换10次。
+PRINT = 开始每隔5s切换一次通道
+CMDMODE = MIS
+TIME = 5000
+REPEAT COUNT = 10
+REPEAT START
+IIS:RG1
+IIS:RG2
+IIS:VID
+IIS:HD1
+IIS:HD2
+IIS:DL1
+IIS:NWP
+IIS:PA1
+IIS:MC1
+IIS:MV1
+REPEAT END
+PRINT = 结束
+
+#好了到现在为止，教程基本上讲解完毕了。
+#是不是，感觉超级好用，那么赶紧DIY自己专属的串口指令脚本吧！
+
+
