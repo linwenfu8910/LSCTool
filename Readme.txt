@@ -1,7 +1,7 @@
 English:
-This software is used for automatic control the Panasonic Projector by
+This software is designed for control the Panasonic Projector by
 use serial port.
-The serial command is base on the Public Panasonic Projector Serial Command.
+The serial command is based on the Public Panasonic Projector Serial Command.
 And provide a solution by use a shell to control the Projector.
 Please see the guide file "LSC工具使用说明书" and then use it.
 Plese do not use this software for any commercial purpose.
